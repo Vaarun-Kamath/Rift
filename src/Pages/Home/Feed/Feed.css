@@ -1,0 +1,21 @@
+.feed-main{
+    height: 100vh;
+    width: 50vw;
+    margin-left: 5%;
+    background-color: cadetblue;
+}
+
+@media screen and (max-width: 600px){
+    .feed-main{
+        width: 100%;
+        margin-left: 0%;
+        /* display: none; */
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .feed-main{
+        width: 100%;
+        /* display: none; */
+    }
+}

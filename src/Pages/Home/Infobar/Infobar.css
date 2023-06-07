@@ -1,0 +1,13 @@
+.infobar-main{
+    height: 100vh;
+    width: 20vw;
+    background-color: brown;
+    margin-right: 5%;
+    
+}
+
+@media screen and (max-width: 1000px){
+    .infobar-main{
+        display: none;
+    }
+}
