@@ -1,0 +1,20 @@
+.button-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 45%;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255,0.3);
+    /* Prevent user from selecting the text */
+    transition: all .1s ease-in-out;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.button-main:hover{
+    background-color: rgb(46, 46, 46);
+    transform: scale(1.02);
+}

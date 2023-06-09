@@ -3,6 +3,56 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 200px; */
-    border: 3px solid green;
+    height: 100%;
+    width: 100%;
+    box-shadow: 5px 0px 5px 5px #101010;
+}
+/* box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color]; */
+
+.pfp-pic{
+    height: 100px;
+    width: 100px;
+    background-color: #7b7b7b;
+    border-radius: 50%;
+    border: 3px solid rgb(206, 75, 75);
+    background-image: url("../../Assets/Images/6.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all .2s ease-in-out;
+    /* background-size: 100% 100%; */
+    /* border-color: white; */
+    /* display: inline-block; */
+}
+
+.pfp-pic:hover{
+    transform: scale(1.07);
+}
+
+
+.rift-id-display{
+    margin-top: 0px;
+    color: white;
+    opacity: 0.5;
+    /* margin-bottom: 0px; */
+}
+
+.buttons-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* justify-items: center; */
+    align-items: center;
+    justify-content: space-around;
+}
+
+.username-display{
+    color: white;
+    margin-bottom: 0px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .pfd-main{
+        display: none;
+    }
 }
