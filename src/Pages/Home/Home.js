@@ -4,6 +4,9 @@ import Feed from './Feed/Feed';
 import Infobar from './Infobar/Infobar';
 
 class Home extends Component {
+	componentDidMount(){
+		// console.log("Mounted Home")
+	}
 	render() {
 		return (
 			<div className='home-root'>

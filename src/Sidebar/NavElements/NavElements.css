@@ -26,3 +26,10 @@
     align-items: center;
 
 }
+
+
+@media screen and (max-width: 1250px) {
+    .post-story-container{
+        flex-direction: column;
+    }
+}
