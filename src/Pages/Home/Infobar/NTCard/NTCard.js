@@ -14,7 +14,7 @@ export default class NTCard extends Component {
 
 	componentDidMount(){
 		var ntcContainer = document.getElementById(this.state.ctcContentContainerIDName)
-		console.log(ntcContainer)
+		// console.log(ntcContainer)
 		for (let i = 0; i < this.state.n; i++) {
 			var ntcTagDiv = document.createElement("div")
 			var ntcTagP = document.createElement("p")

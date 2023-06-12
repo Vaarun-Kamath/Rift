@@ -34,6 +34,13 @@
     /* border: 5px solid green; */
 }
 
+.sign-out-button-container{
+    text-decoration:none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 
 @media screen and (max-width: 1000px){
     .sidebar{
