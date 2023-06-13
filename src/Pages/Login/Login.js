@@ -1,64 +1,104 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Login.css"
 import { useNavigate } from "react-router-dom";
-// import { MongoClient } from 'mongodb';
-
-const connectionString = 'mongodb://localhost:27017/'
-const loginDatabaseName = 'rift-login-info'
-const loginDatabaseCollectionName = 'public-users'
 
 export default function Login() {
+	const [username, setUsername] = useState('')
+	const [password, setPassword] = useState('')
 
 	let navigate = useNavigate();
-	const handleLoginClick = ()=>{
-		const username = document.getElementById("username-id").value
-		const password = document.getElementById("password-id").value
-		if(password == '') {
-			const errDisplay = document.getElementById('password-incorrect-error-text-id')
-			errDisplay.innerHTML = "*Incorrect Password"
-			errDisplay.hidden = false
-		}else if (username == ''){
-			const errDisplay = document.getElementById('password-incorrect-error-text-id')
-			errDisplay.innerHTML = "*Enter Username"
-			errDisplay.hidden = false
-		}else{
-			// const mongoClient = new MongoClient(connectionString);
-			// const data = mongoClient.db(loginDatabaseName).collection(loginDatabaseCollectionName).find({}).toArray();
-			// console.log(data)
-		}
-	}
 	const handleSignUpClick = ()=>{
 		navigate('/signup')
+	}
+
+	const handleUsernameChange = (event)=>{
+		// console.log("Username:" + event.target.value)
+		setUsername(event.target.value)
+	}
+	const handlePasswordChange = (event)=>{
+		// console.log("Password: " + event.target.value)
+		setPassword(event.target.value)
+		// console.log(password)
+	}
+	const loadingBlur = ()=>{
+		const loadingBlur = document.getElementById('overlay-id')
+		loadingBlur.style.display = 'initial'
+	}
+
+	async function loginUser(event) {
+		// console.log("In loginUser function")
+		loadingBlur()
+
+		event.preventDefault()
+		const response = await fetch('http://localhost:8000/api/login',{
+			method:'POST',
+			headers:{
+				'Content-type':'application/json',
+			},
+			body: JSON.stringify({
+				username,
+				password,
+			}),
+		})
+		// console.log(response)
+		const data = await response.json()
+		if(data.userToken){
+			localStorage.setItem('token',data.userToken)
+			navigate('/home') 
+			// window.location.href = '/home'
+		}else{
+			document.getElementById('overlay-id').style.display = 'none'
+		}
+		// console.log("exiting loginUser function")
+		console.log(data)
 	}
 	return (
 		<div className='login-page-main'>
 			<div className='login-box-container'>
+				<span className='overlay' id='overlay-id'></span>
 				<div className='padding-correction'>
-					<div className='logo-container'>
-						<span className='logo-holder'>Rift logo</span>
-					</div>
-					<div className='login-form-container'>
-						<h3 className='heading-text-main'>Sign in with a Rift account</h3>
-						<form className='form-main' >
-							<div className='input-containers'>
-								<div className='username-input-container input-container-main'>
-									<input type='text' id='username-id' required='required' className='username-input-field input-field' placeholder='Username' />
+					{/* <div className='temp' id='temp-id'> */}
+						<div className='logo-container'>
+							<span className='logo-holder'>Rift logo</span>
+						</div>
+						<div className='login-form-container' id='login-form-container-id'>
+							<h3 className='heading-text-main'>Sign in with a Rift account</h3>
+							<form className='form-main' onSubmit={loginUser}>
+								<div className='input-containers'>
+									<div className='username-input-container input-container-main'>
+										<input type='text' 
+										id='username-id'  
+										className='username-input-field input-field' 
+										onChange={handleUsernameChange} 
+										required='required' 
+										placeholder='Username'/>
+									</div>
+									<div className='password-input-container input-container-main'>
+										<input type='password' 
+										id='password-id'
+										className='password-input-field input-field' 
+										onChange={handlePasswordChange} 
+										required='required' 
+										placeholder='Password'/>
+									</div>
 								</div>
-								<div className='password-input-container input-container-main'>
-									<input type='password' id='password-id' required='required' className='password-input-field input-field' placeholder='Password' />
+								<span className='password-incorrect-error-text' id='password-incorrect-error-text-id' hidden></span>
+								<div className='button-container-main'>
+									<div className='sign-up-button-container submit-button-container'>
+										<button className='submit-button' onClick={handleSignUpClick}> Sign Up</button>
+									</div>
+									<div className='login-button-container submit-button-container'>
+										<button type='submit' className='submit-button'>Log in</button>
+									</div>
 								</div>
-							</div>
-							<span className='password-incorrect-error-text' id='password-incorrect-error-text-id' hidden></span>
-							<div className='button-container-main'>
-								<div className='sign-up-button-container submit-button-container'>
-									<button className='submit-button' onClick={handleSignUpClick}> Sign Up</button>
-								</div>
-								<div className='login-button-container submit-button-container'>
-									<button type='submit' className='submit-button' onClick={handleLoginClick}>Log in</button>
-								</div>
-							</div>
-						</form>
-						
+							</form>
+							
+						</div>
+					{/* </div> */}
+					<div className='helper-text-container'>
+						<div className='forgot-password-container'>
+							<a href='' className='forgot-password-main'>Forgot Password</a>
+						</div>
 					</div>
 				</div>
 			</div>

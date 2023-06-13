@@ -14,9 +14,24 @@
     /* border: 0px solid green; */
 }
 
-.login-page-main::-webkit-scrollbar {
-    display: none;
-  }
+
+@media screen and (max-height: 700px) {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .login-page-main::-webkit-scrollbar {
+        display: none;
+        
+    }
+    
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .login-page-main{
+        overflow-y:scroll; 
+        overflow-x: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+}
+
 
 .login-box-container{
     position: relative;
@@ -29,10 +44,47 @@
     /* border: 1px solid green;     */
     margin: 32px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* padding: 50px; */
 }
+
+@media screen and (max-height: 500px) {
+    .login-box-container{
+        display: none;
+    }
+}
+
+.forgot-password-main{
+    color: #686868;
+    font-size: 15px;
+    transition: all .1s ease-in-out;
+}
+
+.forgot-password-main:hover{
+    color: white;
+}
+
+.helper-text-container{
+    height: 200px;
+}
+
+/* .input-container-main .input-field:focus {
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+	color: white;
+} */
+
+.overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    z-index: 5;
+    display:none;
+    background-color: rgba(0, 0, 0, 0.308);
+}
+
 
 .login-form-container{
     position:relative;
@@ -113,6 +165,7 @@
 }
 
 .input-field{
+    outline: none;
     background-color: transparent;
     border: transparent;
     height: 100%;
@@ -168,7 +221,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 0px;
+    padding-top: 0px;
 }
 
 .password-incorrect-error-text{

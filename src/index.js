@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import RoutingControl from './RoutingControl';
+import axios from 'axios'
+
+// import { useEffect, useState } from 'react'
+
+// const axiosInstance = axios.create({
+//     baseURL: process.env.NEXT_PUBLIC_API_URL,
+// })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
