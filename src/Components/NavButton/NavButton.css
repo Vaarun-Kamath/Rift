@@ -16,7 +16,7 @@
 
 .nav-button-main:hover{
     background-color: rgb(46, 46, 46);
-    box-shadow: 0px 0px 10px 5px rgb(0, 0, 0,0.3);
+    /* box-shadow: 0px 0px 10px 5px rgb(0, 0, 0,0.3); */
     border-radius: 10px;
-    transform: scale(1.05);
+    transform: scale(0.9);
 }

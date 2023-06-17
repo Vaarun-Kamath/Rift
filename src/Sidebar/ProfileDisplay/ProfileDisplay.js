@@ -13,8 +13,10 @@ export default class ProfileDisplay extends Component {
 				<p className='rift-id-display'>#000000</p>
 				<div className='buttons-container'>
 					{/* SETTINGS and PROFILE Button Components */}
-					<Button value = "Settings"/>
-					<Button value = "Profile"/>
+					<div className='settings-button-container'><Button>Settings</Button></div>
+					<div className='profile-button-container'><Button>Profile</Button></div>
+					{/* <Button value = "Settings"/>
+					<Button value = "Profile"/> */}
 				</div>
 			</div>
 		)

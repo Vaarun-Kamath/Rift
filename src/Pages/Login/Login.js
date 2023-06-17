@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Login.css"
 import { useNavigate } from "react-router-dom";
 
@@ -20,14 +20,18 @@ export default function Login() {
 		setPassword(event.target.value)
 		// console.log(password)
 	}
-	const loadingBlur = ()=>{
-		const loadingBlur = document.getElementById('overlay-id')
-		loadingBlur.style.display = 'initial'
+	const loadingBlur = (val)=>{
+		const overlayDiv = document.getElementById('overlay-id')
+		if (val === true){
+			overlayDiv.style.display = 'initial'
+		}else{
+			overlayDiv.style.display = 'none'
+		}
 	}
 
 	async function loginUser(event) {
 		// console.log("In loginUser function")
-		loadingBlur()
+		loadingBlur(true)
 
 		event.preventDefault()
 		const response = await fetch('http://localhost:8000/api/login',{
@@ -47,11 +51,37 @@ export default function Login() {
 			navigate('/home') 
 			// window.location.href = '/home'
 		}else{
-			document.getElementById('overlay-id').style.display = 'none'
+			loadingBlur(false)
 		}
 		// console.log("exiting loginUser function")
 		console.log(data)
 	}
+
+	async function verifyToken(){
+		const userToken = localStorage.getItem('token')
+		// console.log(userToken)
+		const response =  await fetch('http://localhost:8000/api/verifytoken',{
+			method:'POST',
+			headers:{
+				'Content-type':'application/json',
+			},
+			body: JSON.stringify({
+				token:userToken
+			}),
+		})
+		const data = await response.json()
+		// console.log(data)
+		if(data.status === 'OK'){
+			navigate('/home')
+		}else if(data.token === true){ 
+			localStorage.removeItem('token')
+		}
+	}
+
+	useEffect(() => {
+		verifyToken()
+	}, []);
+
 	return (
 		<div className='login-page-main'>
 			<div className='login-box-container'>
@@ -84,11 +114,11 @@ export default function Login() {
 								</div>
 								<span className='password-incorrect-error-text' id='password-incorrect-error-text-id' hidden></span>
 								<div className='button-container-main'>
-									<div className='sign-up-button-container submit-button-container'>
-										<button className='submit-button' onClick={handleSignUpClick}> Sign Up</button>
-									</div>
 									<div className='login-button-container submit-button-container'>
 										<button type='submit' className='submit-button'>Log in</button>
+									</div>
+									<div className='sign-up-button-container submit-button-container'>
+										<button className='submit-button' onClick={handleSignUpClick}> Sign Up</button>
 									</div>
 								</div>
 							</form>

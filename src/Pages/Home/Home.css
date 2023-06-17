@@ -4,7 +4,16 @@
 	width: 100vw;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
-	gap:3 rem;
+	justify-content: center	;
+	gap: 3rem;
 	align-items: center;
+}
+
+.feed-infobar-container{
+	height: auto;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	/* gap: 2rem; */
 }

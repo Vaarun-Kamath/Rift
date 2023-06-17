@@ -1,0 +1,135 @@
+.postcard-main{
+    height: 100vh;
+    width: 100vw;
+}
+
+.postcard-box-container{
+    border: 2px solid rgb(80, 80, 80);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px rgb(0, 0, 0,0.3);
+    /* height: 700px; */
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 1rem;
+}
+
+.postcard-heading{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem  ;
+    align-items: center;
+    /* border: 1px solid green; */
+}
+
+.header-element{
+    height: 30px;
+    /* border: 2px solid red; */
+}
+
+.post-user-info-container{
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+}
+
+.pfp-main-container{
+    /* border: 2px solid green;
+    height: 100%;
+    width: 100%; */
+    background-image: url('../../Assets/Images/6.jpg');
+}
+
+.pf-pic-disp-container{
+    background-image: url('../../Assets/Images/6.jpg');
+    background-size: contain;
+    border-radius: 30px;
+    width: 50px;
+    height: 50px;
+}
+
+.pf-name{
+    height: fit-content;
+    width: 200px;
+}
+
+.rift-id-container-main{
+    font-size: 13px;
+    margin-top: 0px;
+    opacity: 0.5;
+}
+
+.pf-interactive{
+    flex-grow: 1;
+    width: fit-content;
+}
+
+
+.postcard-content{
+    min-height: 30px;
+    height: fit-content;
+    border-radius: 5px 5px 5px 0px;
+    box-shadow: 0px 0px 10px 5px #0c0c0c94;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;    
+    /* border: 2px solid #7e7e7e94; */
+    /* justify-content: center; */
+    /* border: 1px solid red; */
+}
+
+.content-imgvid-container{
+    height: 100%;
+    width: 100%;
+    background-image: url('https://picsum.photos/500/500');
+    border-radius: 10px;
+}
+
+.img-main{
+    border-radius: 5px;
+}
+
+
+.postcard-engage{
+    height: fit-content;
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-items: center;
+    /* padding-top: 20px; */
+    /* padding-left: 10px; */
+    gap: 2rem;
+}
+
+.engage-button{
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px #0c0c0c94;
+    /* border: 2px solid #00000094; */
+    transition: all .2s ease-in-out;
+}
+
+.engage-button:hover{
+    scale: 1.2;
+}
+
+.like-button:hover{
+    box-shadow: 0px 0px 10px 2px #aa3333;
+    border: 1px solid #aa3333;
+}
+
+.comment-button:hover{
+    box-shadow: 0px 0px 10px 2px #e8d20c;
+    border: 1px solid #e8d20c;
+}
+
+.share-button:hover{
+    box-shadow: 0px 0px 10px 2px #0c84ce;
+    border: 1px solid #0c84ce;
+}

@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 40px;
-    width: 45%;
+    width: 100%;
     color: white;
     border-radius: 10px;
     border: 2px solid rgb(255, 255, 255,0.3);
@@ -13,6 +13,7 @@
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
 }
+
 
 .button-main:hover{
     background-color: rgb(46, 46, 46);

@@ -1,19 +1,22 @@
 .infobar-main{
     height: 90vh;
-    width: 20vw;
-
+    width: 450px;
+    overflow: hidden;
     /* background-color: brown; */
+    padding: 50px;
+    /* padding-left: 30px; */
+    /* padding-right: 30px; */
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    /* gap: 1rem; */
-    margin-right: 5%;
+    gap: 3rem;
+    /* margin-right: 5%; */
 }
 
 .card-container{
     height: 45%;
-    width: 20vw;
+    width: 100%;
 }
 
 @media screen and (max-width: 1000px){

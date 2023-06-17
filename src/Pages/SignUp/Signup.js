@@ -10,9 +10,13 @@ function Signup() {
 	const [password, setPassword] = useState('')
 	let navigate = useNavigate();
 
-    const loadingBlur = ()=>{
-		const loadingBlur = document.getElementById('overlay-id')
-		loadingBlur.style.display = 'initial'
+    const loadingBlur = (val)=>{
+		const overlayDiv = document.getElementById('overlay-id')
+		if (val === true){
+			overlayDiv.style.display = 'initial'
+		}else{
+			overlayDiv.style.display = 'none'
+		}
 	}
 	const handleFullnameChange = (event)=> setFullname(event.target.value)
 	const handleEmailChange = (event)=> setEmail(event.target.value)
@@ -28,7 +32,7 @@ function Signup() {
 
 
     async function registerUser(event){
-        loadingBlur()
+        loadingBlur(true)
         event.preventDefault()
         const response = await fetch('http://localhost:8000/api/signup',{
 			method:'POST',
@@ -48,7 +52,7 @@ function Signup() {
 		if(data.status === 'OK'){
 			navigate('/login') 
 		}else{
-			document.getElementById('overlay-id').style.display = 'none'
+			loadingBlur(false)
 		}
 		console.log(data)
     }

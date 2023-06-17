@@ -1,4 +1,4 @@
-.post-button-main{
+.post-button-main, .story-button-main{
     height: 100px;
     width: 100px;
     border-radius: 10px;
@@ -15,7 +15,7 @@
 }
 
 /* box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color]; */
-.post-button-main:hover{
+.post-button-main:hover, .story-button-main:hover{
     background-color: rgb(46, 46, 46);
     border-radius: 10px;
     box-shadow: 0px 0px 10px 5px rgb(0, 0, 0,0.3);

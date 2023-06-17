@@ -1,19 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "./Button.css"
 // import { Navigate, useNavigate } from 'react-router-dom';
 
-export default class Button extends Component {
-	constructor(props){  
-		super(props);  
-		this.state={
-			value:this.props.value,
-			redirectLink: this.props.redirectLink
-		}
-	} 
-
-	render() {
-		return (
-			<div className='button-main'>{this.state.value}</div>
-		)
-	}
+function Button({onClick,children}) {
+  return (
+	<div className='button-main' onClick={onClick}>{children}</div>
+  )
 }
+
+export default Button
+
