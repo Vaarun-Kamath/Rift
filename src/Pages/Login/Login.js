@@ -48,7 +48,7 @@ export default function Login() {
 		const data = await response.json()
 		if(data.userToken){
 			localStorage.setItem('token',data.userToken)
-			navigate('/home') 
+			navigate('/home',{state:{user:data}}) 
 			// window.location.href = '/home'
 		}else{
 			loadingBlur(false)
@@ -59,28 +59,31 @@ export default function Login() {
 
 	async function verifyToken(){
 		const userToken = localStorage.getItem('token')
-		// console.log(userToken)
-		const response =  await fetch('http://localhost:8000/api/verifytoken',{
-			method:'POST',
-			headers:{
-				'Content-type':'application/json',
-			},
-			body: JSON.stringify({
-				token:userToken
-			}),
-		})
-		const data = await response.json()
-		// console.log(data)
-		if(data.status === 'OK'){
-			navigate('/home')
-		}else if(data.token === true){ 
-			localStorage.removeItem('token')
+		if(userToken){
+			// console.log(userToken)
+			const response =  await fetch('http://localhost:8000/api/verifytoken',{
+				method:'POST',
+				headers:{
+					'Content-type':'application/json',
+				},
+				body: JSON.stringify({
+					token:userToken
+				}),
+			})
+			const data = await response.json()
+			console.log(data)
+			if(data.status === 'OK'){
+				navigate('/home')
+			}else if(data.token === true){ 
+				localStorage.removeItem('token')
+			}
 		}
+		
 	}
 
 	useEffect(() => {
 		verifyToken()
-	}, []);
+	});
 
 	return (
 		<div className='login-page-main'>
@@ -127,7 +130,7 @@ export default function Login() {
 					{/* </div> */}
 					<div className='helper-text-container'>
 						<div className='forgot-password-container'>
-							<a href='' className='forgot-password-main'>Forgot Password</a>
+							<a href='/' className='forgot-password-main'>Forgot Password</a>
 						</div>
 					</div>
 				</div>

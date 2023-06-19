@@ -9,10 +9,11 @@ function StoryPopUp({ open, children , onClose}) {
         <>
             <div className='storypopup-overlay'></div>
             <div className='storypopup-main'>
-                <Button onClick={onClose}>Cancel</Button>
-                <br />
-                <br />
                 {children}
+                <br />
+                <br />
+                <Button onClick={onClose}>Cancel</Button>
+                
             </div>
         </>,
         document.getElementById('story-portal')

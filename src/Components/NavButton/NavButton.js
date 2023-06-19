@@ -11,7 +11,10 @@ export default class NavButton extends Component {
 	} 
 	render() {
 		return (
-			<div className='nav-button-main'>{this.state.value}</div>
+			<div className='nav-button-container'>
+				<div className='nav-button-main'>{this.state.value}</div>
+			</div>
+			
 		)
 	}
 }

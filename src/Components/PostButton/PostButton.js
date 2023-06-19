@@ -4,20 +4,24 @@ import PostPopUp from '../PostPopUp/PostPopUp';
 import StoryPopUp from '../StoryPopUp/StoryPopUp';
 
 
-function PostButton({value}) {
+function PostButton({value,setPosts}) {
 	const [isPostOpen,setPostIsOpen] = useState(false);
 	const [isStoryOpen,setStoryIsOpen] = useState(false);
 	if(value == 'Post') {
 		return (
 			<>
-				<div className='post-button-main' onClick={()=>setPostIsOpen(true)}>{value}</div>
-				<PostPopUp open={isPostOpen} onClose={()=>setPostIsOpen(false)}></PostPopUp>
+				<div className='overlay-button-container' style={{height:'100%', width:'100%'}}>
+					<div className='post-button-main overlay-button' onClick={()=>setPostIsOpen(true)}>{value}</div>
+				</div>
+				<PostPopUp open={isPostOpen} onClose={()=>setPostIsOpen(false) } setPosts = {setPosts}></PostPopUp>
 			</>
 		)
 	}else if(value == 'Story') {
 		return(
 			<>
-				<div className='story-button-main' onClick={()=>setStoryIsOpen(true)}>{value}</div>
+				<div className='overlay-button-container' style={{height:'100%', width:'100%'}}>
+					<div className='story-button-main overlay-button' onClick={()=>setStoryIsOpen(true)}>{value}</div>
+				</div>
 				<StoryPopUp open={isStoryOpen} onClose={()=>setStoryIsOpen(false)}>Insert Story part</StoryPopUp>
 			</>
 		)
@@ -25,16 +29,3 @@ function PostButton({value}) {
 }
 
 export default PostButton
-
-// class PostButton extends Component {
-// 	constructor(props){  
-// 		super(props);  
-// 		this.state={
-// 			value:this.props.value,
-// 			redirectLink: this.props.redirectLink
-// 		}
-// 	} 
-// 	render() {
-// 		return ()
-// 	}
-// }

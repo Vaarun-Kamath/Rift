@@ -1,14 +1,14 @@
 import React from 'react'
 import './PostCard.css'
 
-function Post() {
+function Post({children, username}) {
   return (
     <div className='postcard-box-container'>
         <div className='postcard-heading'>
           <div className='post-user-info-container'>
             <div className='pf-pic-disp-container header-element'><span className='pfp-main-container'></span></div>
             <span className='pf-name header-element'>
-              <p className='username-container-main header-text-main'> Username Here</p>
+              <p className='username-container-main header-text-main'> {username.charAt(0).toUpperCase() + username.slice(1)}</p>
               <p className='rift-id-container-main header-text-main'> Rift ID Here</p>
             </span>
           </div>
@@ -17,7 +17,7 @@ function Post() {
         <div className='postcard-content'>
           <span className='content-text-container'>
             <p className='content-text-main'>
-              The deep sea, with its vast and uncharted depths
+              {children}
             </p> 
           </span> 
           {/* <span className='content-imgvid-container'></span> */}
