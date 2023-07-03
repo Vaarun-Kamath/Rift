@@ -3,14 +3,14 @@ import "./NavElements.css"
 import NavButton from "../../Components/NavButton/NavButton"
 import PostButton from '../../Components/PostButton/PostButton'
 
-function NavElements({user,setPosts}) {
+function NavElements({user,setPosts,fetchPostsFunction}) {
 	return (
 		<div className='nav-elem-main'>
 			<div className='nav-buttons-container'>
-				<NavButton value = "Home"/>
-				<NavButton value = "Livestreams"/>
-				<NavButton value = "Explore"/>
-				<NavButton value = "Rift"/>
+				<NavButton value = "Home" redirect = {"/home"}/>
+				<NavButton value = "Livestreams" redirect= {"/live"}/>
+				<NavButton value = "Explore" redirect={"/explore"}/>
+				<NavButton value = "Direct Messages" redirect={"/"}/>
 				<NavButton value = "Game Stats"/>
 			</div>
 			<div className='post-story-container'>
@@ -18,7 +18,7 @@ function NavElements({user,setPosts}) {
 					<PostButton value="Story" />
 				</div>
 				<div className='post-main'>
-					<PostButton value="Post" setPosts = {setPosts}/>
+					<PostButton value="Rift" setPosts = {setPosts} fetchPostsFunction = {fetchPostsFunction}/>
 				</div>
 				
 			</div>

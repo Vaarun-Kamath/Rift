@@ -1,9 +1,29 @@
-export async function fetchHomePosts(stateP) {
+import axios from "axios"
+
+export async function fetchHomePosts(/*stateP*/) {
     const posts = await fetch('http://localhost:8000/api/post',{
         method:'GET',
-
     })
-    // console.log(response)
     const data = await posts.json()
-    stateP(data)
+    return data
+}
+
+
+export async function hasUserLiked(postId,userToken){
+    let returnLike = undefined 
+    const response = await axios.post('http://localhost:8000/api/hasUserLiked',{
+        userToken: userToken,
+        postId: postId
+    }).then(res =>{
+        if(res.data.status == "OK"){
+            // console.log(`hasUserLiked(${postId}) = `,res.data.hasLiked)
+            returnLike = res.data.hasLiked
+        }else{
+            console.log("ERROR Fetching data")
+            return false
+        }
+    }).catch(err=>{
+        console.log(err)
+    })
+    return returnLike
 }

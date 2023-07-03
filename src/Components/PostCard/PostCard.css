@@ -106,31 +106,85 @@
     gap: 2rem;
 }
 
+/* .engage-button-container{
+    height: fit-content;
+    width: fit-content;
+    border-color: transparent; */
+    /* border: 2px solid #00000094; */
+    /* transition: all .2s ease-in-out;
+    display: flex;
+    flex-direction: row;
+} */
+
 .engage-button{
     height: 30px;
     width: 30px;
     border-radius: 20px;
-    box-shadow: 0px 0px 10px 5px #0c0c0c94;
-    border-color: transparent;
-    /* border: 2px solid #00000094; */
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-color: transparent;
     transition: all .2s ease-in-out;
 }
 
-.engage-button:hover{
+
+.like-button{
+    background-image: url('../../Assets/postInteractiveImgs/like_nopress.png');
+    background-size: 55%;
+}
+
+.like-button-clicked{
+    background-image:  url('../../Assets/postInteractiveImgs/like_press.png');
+    background-size: 55%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    /* background-color: rgb(233, 65, 121); */
+}
+
+.like-button-clicked:hover{
     scale: 1.2;
 }
 
 .like-button:hover{
-    box-shadow: 0px 0px 10px 2px #aa3333;
-    border: 1px solid #aa3333;
+    background-color: rgb(233, 65, 121);
+    scale: 1.2;
+}
+
+.comment-button{
+    background-image: url('../../Assets/postInteractiveImgs/reply.png');
+    background-size: 80%;
 }
 
 .comment-button:hover{
-    box-shadow: 0px 0px 10px 2px #e8d20c;
-    border: 1px solid #e8d20c;
+    background-color: rgb(231, 201, 52);
+}
+
+.rerift-button{
+    background-image: url('../../Assets/postInteractiveImgs/rerift.png');
+    background-size: 65%;
+}
+
+.rerift-button:hover{
+    background-color: rgb(146, 233, 65);
+}
+
+.share-button{
+    background-image: url('../../Assets/postInteractiveImgs/share.png');
+    background-size: 65%;
 }
 
 .share-button:hover{
-    box-shadow: 0px 0px 10px 2px #0c84ce;
-    border: 1px solid #0c84ce;
+    background-color: rgb(65, 146, 233);
+}
+
+.engage-button-container{
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 10px;
+}
+
+.engage-button-stats{
+    color: aliceblue;
 }

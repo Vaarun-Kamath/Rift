@@ -7,7 +7,7 @@ import 'react-quill/dist/quill.snow.css'
 import { fetchHomePosts } from '../../globalFunctions';
 
 
-function PostPopUp({ open, children , onClose,setPosts}) {
+function PostPopUp({ open, children , onClose,setPosts,fetchPostsFunction}) {
     // const navigate = useNavigate();
     const textPostRef = useRef(null);
     const [textPostValue, setTextPostValue] = useState('')
@@ -59,7 +59,7 @@ function PostPopUp({ open, children , onClose,setPosts}) {
 
     const handleOnPost = ()=>{
         onClose();
-        fetchHomePosts(setPosts);
+        fetchPostsFunction()
     }
 
     async function createPost(event){
@@ -97,7 +97,7 @@ function PostPopUp({ open, children , onClose,setPosts}) {
             <div className='postpopup-main'>
                 <div className='post-notouch-overlay' id='post-notouch-overlay-id'></div>
                 <div className='post-form-containter'>
-                    <h1 >Create a post</h1>
+                    <h1 >Create a Rift</h1>
                     <div className='post-content-main-container'>
                         <textarea ref={textPostRef} 
                             onChange={handleTextPostChange} 

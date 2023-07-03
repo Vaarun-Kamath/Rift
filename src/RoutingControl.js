@@ -4,7 +4,8 @@ import Login from './Pages/Login/Login';
 import Home from '../src/Pages/Home/Home';
 import Signup from './Pages/SignUp/Signup';
 import PostCard from './Components/PostCard/PostCard';
-{/* DEVELOPMENT ONLY */}
+import { useNavigate } from 'react-router-dom';
+
 
 export default function RoutingControl() {
   return (
@@ -13,7 +14,6 @@ export default function RoutingControl() {
                 <Route path='/home' element={<Home />}/>
                 <Route path='/login' element={<Login />}/>
                 <Route path='/signup' element={<Signup />}/>
-                {/* DEVELOPMENT ONLY */}
                 <Route path='/post' element={<PostCard />}/> 
             </Routes>
         </Router>

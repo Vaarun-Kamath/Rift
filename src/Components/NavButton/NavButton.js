@@ -1,21 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "./NavButton.css"
+import { useNavigate } from "react-router-dom";
 
-export default class NavButton extends Component {
-	constructor(props){  
-		super(props);  
-		this.state={
-			value:this.props.value,
-			redirectLink: this.props.redirectLink
-		}
-	} 
-	render() {
-		return (
-			<div className='nav-button-container'>
-				<div className='nav-button-main'>{this.state.value}</div>
-			</div>
-			
-		)
+function NavButton({value,redirect}) {
+	let navigate = useNavigate();
+	const handleNavRedirect = ()=>{
+		if(redirect != null) navigate(redirect);
 	}
+	return (
+		<div className='nav-button-container'>
+			<div className='nav-button-main' onClick={handleNavRedirect}>{value}</div>
+		</div>
+	)
 }
 
+export default NavButton

@@ -5,7 +5,7 @@ import NavElements from "./NavElements/NavElements"
 import Button from '../Components/Buttons/Button'
 import { useNavigate } from "react-router-dom";
 
-function Sidebar({user,setPosts}) {
+function Sidebar({user,setPosts,fetchPostsFunction}) {
     let navigate = useNavigate();
     const removeToken = ()=>{
         localStorage.removeItem('token');
@@ -20,7 +20,7 @@ function Sidebar({user,setPosts}) {
                     <ProfileDisplay user = {user}/>
                 </div>
                 <div className='elements-container'>
-                    <NavElements user = {user} setPosts={setPosts}/>
+                    <NavElements user = {user} setPosts={setPosts} fetchPostsFunction = {fetchPostsFunction}/>
                 </div>
                 {/* Sign Out Button is temporary for Development Purposes */}
                 <div className='sign-out-button-container'><Button onClick={()=>removeToken()}>TEMP : SignOut</Button></div>
