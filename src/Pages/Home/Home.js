@@ -6,11 +6,15 @@ import jwt from 'jsonwebtoken';
 import Infobar from './Infobar/Infobar';
 import { useNavigate } from "react-router-dom";
 import Sidebar from '../../Sidebar/Sidebar';
+import { fetchHomePosts, hasUserLiked } from "../../globalFunctions"
 
 export default function Home() {
 	const navigate = useNavigate();
 	const token = localStorage.getItem('token');
+
 	const currUser = jwt.decode(token);
+	const [posts, setPosts] = useState([]);
+    const [likedStatus, setLikedStatus] = useState({});
 
 	const getTokenInfo = () => {
 	if (token && !currUser) {
@@ -24,14 +28,43 @@ export default function Home() {
 	return true;
 	};
 
+	const fetchPostsAndLikes = ()=>{
+        fetchHomePosts()
+        .then((value) => {
+            setPosts(value);
+            fetchLikedStatus(value);
+        }).catch((error) => {
+            console.log('ERROR FETCHING POSTS:', error);
+        });
+    }
+
+	const fetchLikedStatus = async (posts) => {
+        const likedStatusMap = {};
+        for (const post of posts) {
+            const hasLiked = await hasUserLiked(post._id, localStorage.getItem('token'));   
+            likedStatusMap[post._id] = hasLiked;
+        }
+        // console.log('LikedStatusMap: ',likedStatusMap)
+        setLikedStatus(likedStatusMap);
+    };
+
 	if (getTokenInfo()) {
 	try {
 		return (
 			<div className='home-root'>
 			{console.log("CALLING HOME")}
-			<Sidebar user={currUser} fetchPostsFunction={()=>null}/>
+			<Sidebar user={currUser} 
+				posts = {posts} 
+				likedStatus={likedStatus} 
+				fetchPostsAndLikes={fetchPostsAndLikes}
+				from = "Home"
+			/>
 			<div className='feed-infobar-container'>
-			<Feed user={currUser} />
+			<Feed user={currUser} 
+				posts = {posts} 
+				likedStatus={likedStatus} 
+				fetchPostsAndLikes={fetchPostsAndLikes}
+			/>
 			<Infobar user={currUser} />
 			</div>
 		</div>

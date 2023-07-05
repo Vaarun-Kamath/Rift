@@ -4,10 +4,10 @@ import ReactDom from 'react-dom'
 import Button from '../Buttons/Button'
 // import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import { fetchHomePosts } from '../../globalFunctions';
+// import { fetchHomePosts } from '../../globalFunctions';
 
 
-function PostPopUp({ open, children , onClose,setPosts,fetchPostsFunction}) {
+function PostPopUp({ open, children , onClose,fetchPostsAndLikes, posts, likedStatus}) {
     // const navigate = useNavigate();
     const textPostRef = useRef(null);
     const [textPostValue, setTextPostValue] = useState('')
@@ -59,7 +59,7 @@ function PostPopUp({ open, children , onClose,setPosts,fetchPostsFunction}) {
 
     const handleOnPost = ()=>{
         onClose();
-        fetchPostsFunction()
+        fetchPostsAndLikes()
     }
 
     async function createPost(event){

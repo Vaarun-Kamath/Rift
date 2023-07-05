@@ -1,4 +1,5 @@
 import axios from "axios"
+import jwt from 'jsonwebtoken';
 
 export async function fetchHomePosts(/*stateP*/) {
     const posts = await fetch('http://localhost:8000/api/post',{
@@ -26,4 +27,10 @@ export async function hasUserLiked(postId,userToken){
         console.log(err)
     })
     return returnLike
+}
+
+export async function getUserInfo(){
+    const userToken = localStorage.getItem('token')
+    const userInfo = jwt.decode(userToken)
+    return userInfo
 }

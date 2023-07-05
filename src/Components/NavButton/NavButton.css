@@ -20,8 +20,9 @@
 
 .nav-button-container:hover{
     .nav-button-main{
-        background-color: rgb(46, 46, 46);
-        border: 2px solid rgb(79, 79, 79);
+        /* background-color: rgb(46, 46, 46); */
+        background-color: #383a403b;
+        /* border: 2px solid rgb(79, 79, 79); */
         border-radius: 10px;
         transform: scale(0.9);
     }

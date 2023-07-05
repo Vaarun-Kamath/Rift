@@ -8,6 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #383a403b;
     /* border: 1px solid green; */
     transition: all .1s ease-in-out;
     -webkit-user-select: none; /* Safari */
@@ -19,8 +20,8 @@
 
 .overlay-button-container:hover{
     .overlay-button{
-        background-color: rgb(46, 46, 46);
-        border: 2px solid rgb(79, 79, 79);
+        /* background-color: rgb(46, 46, 46); */
+        /* border: 2px solid rgb(79, 79, 79); */
         border-radius: 10px;
         transform: scale(0.9);
     }

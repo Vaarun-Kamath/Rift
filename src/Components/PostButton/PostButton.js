@@ -4,7 +4,7 @@ import PostPopUp from '../PostPopUp/PostPopUp';
 import StoryPopUp from '../StoryPopUp/StoryPopUp';
 
 
-function PostButton({value,setPosts,fetchPostsFunction}) {
+function PostButton({value,fetchPostsAndLikes, posts, likedStatus}) {
 	const [isPostOpen,setPostIsOpen] = useState(false);
 	const [isStoryOpen,setStoryIsOpen] = useState(false);
 	if(value == 'Rift') {
@@ -13,7 +13,13 @@ function PostButton({value,setPosts,fetchPostsFunction}) {
 				<div className='overlay-button-container' style={{height:'100%', width:'100%'}}>
 					<div className='post-button-main overlay-button' onClick={()=>setPostIsOpen(true)}>{value}</div>
 				</div>
-				<PostPopUp open={isPostOpen} onClose={()=>setPostIsOpen(false) } fetchPostsFunction = {fetchPostsFunction} setPosts = {setPosts}></PostPopUp>
+				<PostPopUp 
+					open={isPostOpen} 
+					onClose={()=>setPostIsOpen(false) } 
+					posts = {posts} 
+					likedStatus={likedStatus} 
+					fetchPostsAndLikes={fetchPostsAndLikes} >
+				</PostPopUp>
 			</>
 		)
 	}else if(value == 'Story') {

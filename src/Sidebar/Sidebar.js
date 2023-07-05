@@ -5,22 +5,21 @@ import NavElements from "./NavElements/NavElements"
 import Button from '../Components/Buttons/Button'
 import { useNavigate } from "react-router-dom";
 
-function Sidebar({user,setPosts,fetchPostsFunction}) {
+function Sidebar({user, fetchPostsAndLikes, posts, likedStatus,from='None'}) {
     let navigate = useNavigate();
     const removeToken = ()=>{
         localStorage.removeItem('token');
         navigate('/login')
     }
-
+    console.log("Sidebar from ",from)
     return (
         <div className='sidebar'>
-            {/* pfd = ProfileDisplay */}
             <div className='pfd-elements-container'>
                 <div className='pfd-container'>
-                    <ProfileDisplay user = {user}/>
+                    <ProfileDisplay/>
                 </div>
                 <div className='elements-container'>
-                    <NavElements user = {user} setPosts={setPosts} fetchPostsFunction = {fetchPostsFunction}/>
+                    <NavElements posts = {posts} likedStatus={likedStatus} fetchPostsAndLikes={fetchPostsAndLikes}/>
                 </div>
                 {/* Sign Out Button is temporary for Development Purposes */}
                 <div className='sign-out-button-container'><Button onClick={()=>removeToken()}>TEMP : SignOut</Button></div>
