@@ -7,7 +7,7 @@ import 'react-quill/dist/quill.snow.css'
 // import { fetchHomePosts } from '../../globalFunctions';
 
 
-function PostPopUp({ open, children , onClose,fetchPostsAndLikes, posts, likedStatus}) {
+function PostPopUp({ open, children , onClose,fetchPostsAndLikes, posts, likedStatus,from = 'None'}) {
     // const navigate = useNavigate();
     const textPostRef = useRef(null);
     const [textPostValue, setTextPostValue] = useState('')
@@ -59,7 +59,9 @@ function PostPopUp({ open, children , onClose,fetchPostsAndLikes, posts, likedSt
 
     const handleOnPost = ()=>{
         onClose();
-        fetchPostsAndLikes()
+        if(from !== "Messages"){
+            fetchPostsAndLikes()
+        }
     }
 
     async function createPost(event){

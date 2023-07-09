@@ -4,7 +4,7 @@ import PostPopUp from '../PostPopUp/PostPopUp';
 import StoryPopUp from '../StoryPopUp/StoryPopUp';
 
 
-function PostButton({value,fetchPostsAndLikes, posts, likedStatus}) {
+function PostButton({value,fetchPostsAndLikes, posts, likedStatus,from='None'}) {
 	const [isPostOpen,setPostIsOpen] = useState(false);
 	const [isStoryOpen,setStoryIsOpen] = useState(false);
 	if(value == 'Rift') {
@@ -18,7 +18,9 @@ function PostButton({value,fetchPostsAndLikes, posts, likedStatus}) {
 					onClose={()=>setPostIsOpen(false) } 
 					posts = {posts} 
 					likedStatus={likedStatus} 
-					fetchPostsAndLikes={fetchPostsAndLikes} >
+					fetchPostsAndLikes={fetchPostsAndLikes} 
+					from = {from}
+				>
 				</PostPopUp>
 			</>
 		)

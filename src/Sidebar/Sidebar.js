@@ -25,7 +25,12 @@ function Sidebar({user, fetchPostsAndLikes, posts, likedStatus,from='None'}) {
                     <ProfileDisplay/>
                 </div>
                 <div className='elements-container'>
-                    <NavElements posts = {posts} likedStatus={likedStatus} fetchPostsAndLikes={fetchPostsAndLikes}/>
+                    <NavElements 
+                        posts = {posts} 
+                        likedStatus={likedStatus} 
+                        fetchPostsAndLikes={fetchPostsAndLikes}
+                        from = {from}
+                    />
                 </div>
                 {/* Sign Out Button is temporary for Development Purposes */}
                 <div className='sign-out-button-container'><Button onClick={()=>logout()}>TEMP : SignOut</Button></div>

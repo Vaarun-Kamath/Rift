@@ -26,7 +26,7 @@ function DMUsers({onlineUsers,currUser}) {
                 </div>
             </div>
             <div className='direct-message-user-button-container'>
-                {(Object.keys(onlineUsers).length === 1)? 
+                {(Object.keys(onlineUsers).length === 1 || Object.keys(onlineUsers)[0] == null)? 
                     <div className='no-users-Online'>
                         <h2>No users online</h2>
                     </div>

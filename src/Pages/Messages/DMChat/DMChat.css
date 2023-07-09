@@ -19,13 +19,16 @@
     width: 100%;
     height: 80%;
     border-bottom: 2px solid #2e2e2e;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .direct-message-chats-container-closed{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .direct-message-chats-engagement-container{
@@ -53,6 +56,9 @@
     border: 0px solid #ffffff45;
     border-radius: 5px;
     padding: 13px;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
 .direct-message-send-container{
@@ -62,6 +68,7 @@
     /* border: 1px solid red; */
     align-items: center;
     justify-content: flex-end;
+    outline: none;
 }
 
 .direct-message-send-button{
@@ -75,6 +82,7 @@
     background-position: 65% 50%;
     background-repeat: no-repeat;
     transition: 0.2s ease-in-out;
+    outline: none;
 }
 
 .direct-message-send-button:hover{

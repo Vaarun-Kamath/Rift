@@ -29,6 +29,15 @@ export async function hasUserLiked(postId,userToken){
     return returnLike
 }
 
+
+/*
+! FORMAT OF USER TOKEN
+* dbID: user._id,
+* fullName: user.fullname,
+* username: user.username,
+* email: user.email,
+* dob: user.dob
+*/
 export async function getUserInfo(){
     const userToken = localStorage.getItem('token')
     const userInfo = jwt.decode(userToken)
