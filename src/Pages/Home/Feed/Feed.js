@@ -2,22 +2,22 @@ import React, { useEffect, useState } from 'react';
 import './Feed.css';
 import PostCard from '../../../Components/PostCard/PostCard';
 
-function Feed({fetchPostsAndLikes, posts, likedStatus}) {
+function Feed({posts, likedStatus}) {
 
-    useEffect(() => {
-        fetchPostsAndLikes()
-    }, []);
+    // useEffect(() => {
+    //     fetchPostsAndLikes()
+    // }, []);
 
     return (
     <div className="feed-main">
         {posts.length > 0 &&
         posts.map((post, index) => (
             <PostCard
-            key={index}
-            username={post.postedBy}
-            postId={post._id}
-            likesNumber={post.postLikes}
-            likeStat = {likedStatus}
+                key={index}
+                username={post.postedBy}
+                postId={post._id}
+                likesNumber={post.postLikes}
+                likeStat = {likedStatus}
             >
             {post.postText}
             </PostCard>

@@ -5,10 +5,16 @@ import NavElements from "./NavElements/NavElements"
 import Button from '../Components/Buttons/Button'
 import { useNavigate } from "react-router-dom";
 
+
 function Sidebar({user, fetchPostsAndLikes, posts, likedStatus,from='None'}) {
     let navigate = useNavigate();
-    const removeToken = ()=>{
+    const logout = ()=>{
         localStorage.removeItem('token');
+        document.cookie.split(";").forEach((c) => {
+            document.cookie = c
+              .replace(/^ +/, "")
+              .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+          });
         navigate('/login')
     }
     console.log("Sidebar from ",from)
@@ -22,7 +28,7 @@ function Sidebar({user, fetchPostsAndLikes, posts, likedStatus,from='None'}) {
                     <NavElements posts = {posts} likedStatus={likedStatus} fetchPostsAndLikes={fetchPostsAndLikes}/>
                 </div>
                 {/* Sign Out Button is temporary for Development Purposes */}
-                <div className='sign-out-button-container'><Button onClick={()=>removeToken()}>TEMP : SignOut</Button></div>
+                <div className='sign-out-button-container'><Button onClick={()=>logout()}>TEMP : SignOut</Button></div>
             </div>
             
         </div>

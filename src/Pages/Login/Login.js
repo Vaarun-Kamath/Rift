@@ -1,28 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import "./Login.css"
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from '../../userContext';
 
 export default function Login() {
+	let navigate = useNavigate();
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
-	let navigate = useNavigate();
+	const {setUsername:setLoggedInUsername, setId, setFullname, setEmail, setDob} = useContext(UserContext);
+
 	const handleSignUpClick = ()=>{
 		navigate('/signup')
 	}
 
-	const handleUsernameChange = (event)=>{
-		// console.log("Username:" + event.target.value)
-		setUsername(event.target.value)
-	}
-	const handlePasswordChange = (event)=>{
-		// console.log("Password: " + event.target.value)
-		setPassword(event.target.value)
-		// console.log(password)
-	}
+	const handleUsernameChange = (event)=> setUsername(event.target.value)
+	const handlePasswordChange = (event)=> setPassword(event.target.value)
+
 	const loadingBlur = (val)=>{
 		const overlayDiv = document.getElementById('overlay-id')
-		if (val === true){
+		if (val){
 			overlayDiv.style.display = 'initial'
 		}else{
 			overlayDiv.style.display = 'none'
@@ -30,30 +28,25 @@ export default function Login() {
 	}
 
 	async function loginUser(event) {
-		// console.log("In loginUser function")
 		loadingBlur(true)
 
 		event.preventDefault()
-		const response = await fetch('http://localhost:8000/api/login',{
-			method:'POST',
-			headers:{
-				'Content-type':'application/json',
-			},
-			body: JSON.stringify({
-				username,
-				password,
-			}),
+		const {data} = await axios.post('http://localhost:8000/api/login', {
+			username,
+            password,
 		})
-		// console.log(response)
-		const data = await response.json()
-		if(data.userToken){
-			localStorage.setItem('token',data.userToken)
-			navigate('/home',{state:{user:data}}) 
-			// window.location.href = '/home'
-		}else{
+
+		if(data.status === 'OK'){
+			setId(data.id);
+			setLoggedInUsername(data.user.username);
+			setFullname(data.user.fullname);
+			setDob(data.user.dob);
+			setEmail(data.user.email);
+			localStorage.setItem('token',data.token)
+			navigate('/home',{state:{user:data.user}}) 
+		}else{ // Error in Login TODO: handle error
 			loadingBlur(false)
 		}
-		// console.log("exiting loginUser function")
 		console.log(data)
 	}
 

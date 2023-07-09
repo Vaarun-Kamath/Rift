@@ -5,11 +5,15 @@ import Home from '../src/Pages/Home/Home';
 import Signup from './Pages/SignUp/Signup';
 import PostCard from './Components/PostCard/PostCard';
 import Messages from './Pages/Messages/Messages';
+import axios from 'axios';
+import {UserContextProvider} from './userContext'
 
 
 export default function RoutingControl() {
+  axios.defaults.withCredentials = true;
   return (
-        <Router>
+    <UserContextProvider>
+      <Router>
             <Routes>
                 <Route path='/home' element={<Home />}/>
                 <Route path='/login' element={<Login />}/>
@@ -18,5 +22,7 @@ export default function RoutingControl() {
                 <Route path='/messages' element={<Messages />}/> 
             </Routes>
         </Router>
+    </UserContextProvider>
+        
   )
 }
