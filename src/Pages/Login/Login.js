@@ -9,7 +9,7 @@ export default function Login() {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 
-	const {setUsername:setLoggedInUsername, setId, setFullname, setEmail, setDob} = useContext(UserContext);
+	const {setUsername:setLoggedInUsername, setCurrUser, setFullname, setEmail, setDob} = useContext(UserContext);
 
 	const handleSignUpClick = ()=>{
 		navigate('/signup')
@@ -37,7 +37,7 @@ export default function Login() {
 		})
 
 		if(data.status === 'OK'){
-			setId(data.id);
+			setCurrUser(data.id);
 			setLoggedInUsername(data.user.username);
 			setFullname(data.user.fullname);
 			setDob(data.user.dob);
@@ -83,7 +83,6 @@ export default function Login() {
 			<div className='login-box-container'>
 				<span className='overlay' id='overlay-id'></span>
 				<div className='padding-correction'>
-					{/* <div className='temp' id='temp-id'> */}
 						<div className='logo-container'>
 							<span className='logo-holder'>Rift logo</span>
 						</div>

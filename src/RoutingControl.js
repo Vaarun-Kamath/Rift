@@ -7,13 +7,15 @@ import PostCard from './Components/PostCard/PostCard';
 import Messages from './Pages/Messages/Messages';
 import axios from 'axios';
 import {UserContextProvider} from './userContext'
+import { SelectedDMContextProvider } from './Pages/Messages/SelectedUserDMContext';
 
 
 export default function RoutingControl() {
   axios.defaults.withCredentials = true;
   return (
     <UserContextProvider>
-      <Router>
+      <SelectedDMContextProvider>
+        <Router>
             <Routes>
                 <Route path='/home' element={<Home />}/>
                 <Route path='/login' element={<Login />}/>
@@ -22,6 +24,7 @@ export default function RoutingControl() {
                 <Route path='/messages' element={<Messages />}/> 
             </Routes>
         </Router>
+      </SelectedDMContextProvider>
     </UserContextProvider>
         
   )

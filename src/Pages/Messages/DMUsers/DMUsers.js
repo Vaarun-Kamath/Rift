@@ -3,9 +3,11 @@ import React, { useContext, useState } from 'react'
 import "./DMUsers.css"
 import UserDMButton from '../../../Components/UserDMButton/UserDMButton'
 import { SelectedDM } from '../SelectedUserDMContext'
+import { UserContext } from '../../../userContext'
 
-function DMUsers({onlineUsers,currUser}) {
+function DMUsers({onlineUsers}) {
     // ! format of onlineUsers = {dbId: username}
+    const {currUser} = useContext(UserContext)
     const {selectedUserId, setSelectedUserId} = useContext(SelectedDM)
 
     const handleNewDMClick = ()=>{

@@ -12,14 +12,14 @@ export function UserContextProvider({children}){
     const [email, setEmail] = useState(null);
     const [username,setUsername] = useState(null);
     const [dob, setDob] = useState(null);
-    const [id,setId] = useState(null);
+    const [currUser,setCurrUser] = useState(null);
     return(
         <UserContext.Provider 
         value={{
                     username,
                     setUsername,
-                    id,
-                    setId,
+                    currUser,
+                    setCurrUser,
                     fullname,
                     setFullname,
                     email,

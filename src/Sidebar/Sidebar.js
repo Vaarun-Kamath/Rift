@@ -17,7 +17,6 @@ function Sidebar({user, fetchPostsAndLikes, posts, likedStatus,from='None'}) {
           });
         navigate('/login')
     }
-    console.log("Sidebar from ",from)
     return (
         <div className='sidebar'>
             <div className='pfd-elements-container'>
