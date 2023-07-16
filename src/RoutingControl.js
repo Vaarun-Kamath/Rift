@@ -7,7 +7,7 @@ import PostCard from './Components/PostCard/PostCard';
 import Messages from './Pages/Messages/Messages';
 import axios from 'axios';
 import {UserContextProvider} from './userContext'
-import { SelectedDMContextProvider } from './Pages/Messages/SelectedUserDMContext';
+import { SelectedDMContextProvider } from './SelectedUserDMContext';
 
 
 export default function RoutingControl() {

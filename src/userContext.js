@@ -13,20 +13,23 @@ export function UserContextProvider({children}){
     const [username,setUsername] = useState(null);
     const [dob, setDob] = useState(null);
     const [currUser,setCurrUser] = useState(null);
+    const [selectedUserId, setSelectedUserId] = useState();
     return(
         <UserContext.Provider 
         value={{
-                    username,
-                    setUsername,
-                    currUser,
-                    setCurrUser,
-                    fullname,
-                    setFullname,
-                    email,
-                    setEmail,
-                    dob,
-                    setDob
-                }}>
+            username,
+            setUsername,
+            currUser,
+            setCurrUser,
+            fullname,
+            setFullname,
+            email,
+            setEmail,
+            dob,
+            setDob,
+            selectedUserId,
+            setSelectedUserId
+        }}>
             {children}
         </UserContext.Provider>
     )

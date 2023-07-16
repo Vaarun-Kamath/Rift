@@ -1,23 +1,29 @@
 // eslint-disable-next-line
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import "./DMUsers.css"
 import UserDMButton from '../../../Components/UserDMButton/UserDMButton'
-import { SelectedDM } from '../SelectedUserDMContext'
+// import { SelectedDM } from '../../../SelectedUserDMContext'
 import { UserContext } from '../../../userContext'
 
 function DMUsers({onlineUsers}) {
     // ! format of onlineUsers = {dbId: username}
     const {currUser} = useContext(UserContext)
-    const {selectedUserId, setSelectedUserId} = useContext(SelectedDM)
+    const {selectedUserId, setSelectedUserId} = useContext(UserContext)
 
     const handleNewDMClick = ()=>{
         console.log("Add New DM")
     }
-    console.log("CURRRR: ",currUser)
+
+    useEffect(() => {
+        console.log("DMUsers.js : selectedUserId: ", selectedUserId);
+      }, [selectedUserId]);
+
+    // console.log("CURRRR: ",currUser)
     const selectUser = (userId)=>{
         console.log("Selected User: ",userId === null?"null":onlineUsers[userId])
         setSelectedUserId(userId)
     }
+
     return (
         <div className='direct-message-user'>
             {/* DMUsers */}
