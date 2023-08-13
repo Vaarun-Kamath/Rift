@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Rift/static/css/main.99acd23d.css",
+    "main.js": "/Rift/static/js/main.5e1081a3.js",
+    "static/js/787.83805375.chunk.js": "/Rift/static/js/787.83805375.chunk.js",
+    "static/media/6.jpg": "/Rift/static/media/6.ce79830650b96feb3660.jpg",
+    "static/media/like_nopress.png": "/Rift/static/media/like_nopress.c412cbaead4744166c20.png",
+    "static/media/send_white.png": "/Rift/static/media/send_white.3e2711847eb80dd00fa4.png",
+    "static/media/share.png": "/Rift/static/media/share.8f7deca4e2be5ff91343.png",
+    "static/media/like_press.png": "/Rift/static/media/like_press.172e627cb83b2ea56618.png",
+    "static/media/reply.png": "/Rift/static/media/reply.5dd0968617bc2ebb4f70.png",
+    "index.html": "/Rift/index.html",
+    "main.99acd23d.css.map": "/Rift/static/css/main.99acd23d.css.map",
+    "main.5e1081a3.js.map": "/Rift/static/js/main.5e1081a3.js.map",
+    "787.83805375.chunk.js.map": "/Rift/static/js/787.83805375.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.99acd23d.css",
+    "static/js/main.5e1081a3.js"
+  ]
+}
