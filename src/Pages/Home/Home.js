@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './Home.css';
 import '../../Sidebar/Sidebar.css';
 import Feed from './Feed/Feed';
@@ -7,14 +7,21 @@ import Infobar from './Infobar/Infobar';
 import { useNavigate } from "react-router-dom";
 import Sidebar from '../../Sidebar/Sidebar';
 import { fetchHomePosts, hasUserLiked } from "../../globalFunctions"
+import { UserContext } from '../../userContext';
 
 export default function Home() {
 	const navigate = useNavigate();
 	const token = localStorage.getItem('token');
-
+	const {setUsername:setLoggedInUsername, setCurrUser, setFullname, setEmail, setDob} = useContext(UserContext);
 	const currUser = jwt.decode(token);
 	const [posts, setPosts] = useState([]);
     const [likedStatus, setLikedStatus] = useState({});
+
+	// setCurrUser(data.id);
+	// setLoggedInUsername(data.user.username);
+	// setFullname(data.user.fullname);
+	// setDob(data.user.dob);
+	// setEmail(data.user.email);
 
 	const getTokenInfo = () => {
 		if (token && !currUser) {
@@ -25,6 +32,13 @@ export default function Home() {
 			navigate('/login');
 			return false;
 		}
+		console.log('Home.js : currUser : ',currUser)
+		setCurrUser(currUser.dbID);
+		setLoggedInUsername(currUser.username);
+		setFullname(currUser.fullname);
+		setEmail(currUser.email);
+		setDob(currUser.dob);
+		
 		return true;
 	};
 
@@ -49,14 +63,14 @@ export default function Home() {
     };
 	useEffect(() =>{
 		fetchPostsAndLikes()
-		console.log("IN Use Effect Home")
+		// console.log("IN Use Effect Home")
 	},[])
 
 	if (getTokenInfo()) {
 		try {
 			return (
 				<div className='home-root'>
-					{console.log("CALLING HOME")}
+					{/* {console.log("CALLING HOME")} */}
 					<Sidebar user={currUser} 
 						posts = {posts} 
 						likedStatus={likedStatus} 

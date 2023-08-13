@@ -9,7 +9,6 @@ import axios from 'axios';
 import {UserContextProvider} from './userContext'
 import { SelectedDMContextProvider } from './SelectedUserDMContext';
 
-
 export default function RoutingControl() {
   axios.defaults.withCredentials = true;
   return (
@@ -17,6 +16,7 @@ export default function RoutingControl() {
       <SelectedDMContextProvider>
         <Router>
             <Routes>
+                <Route path='/' element={<Login />}/> 
                 <Route path='/home' element={<Home />}/>
                 <Route path='/login' element={<Login />}/>
                 <Route path='/signup' element={<Signup />}/>

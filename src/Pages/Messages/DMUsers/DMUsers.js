@@ -14,13 +14,13 @@ function DMUsers({onlineUsers}) {
         console.log("Add New DM")
     }
 
-    useEffect(() => {
-        console.log("DMUsers.js : selectedUserId: ", selectedUserId);
-      }, [selectedUserId]);
+    // useEffect(() => {
+    //     console.log("DMUsers.js : selectedUserId: ", selectedUserId);
+    //   }, [selectedUserId]);
 
     // console.log("CURRRR: ",currUser)
     const selectUser = (userId)=>{
-        console.log("Selected User: ",userId === null?"null":onlineUsers[userId])
+        // console.log("Selected User: ",userId === null?"null":onlineUsers[userId])
         setSelectedUserId(userId)
     }
 

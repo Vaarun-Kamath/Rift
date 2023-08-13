@@ -23,7 +23,7 @@ function Messages() {
     },[])
 
     useEffect(()=>{
-        console.log("Messages.js : selectedUserId: ",selectedUserId);
+        // console.log("Messages.js : selectedUserId: ",selectedUserId);
         localStorage.setItem('selectedUserId',selectedUserId);
     },[selectedUserId]);
 
@@ -51,11 +51,11 @@ function Messages() {
     const handleMessage = (event)=>{
         const data = JSON.parse(event.data)
         const selectedId = localStorage.getItem('selectedUserId');
-        console.log("Messages.js : selectedId : ",selectedId);
+        // console.log("Messages.js : selectedId : ",selectedId);
         if('online' in data){
             showOnlineUsers(data.online);
         }else if('text' in data){
-            console.log("SENDER: ",data.sender, "SELECTED:",selectedId);
+            // console.log("SENDER: ",data.sender, "SELECTED:",selectedId);
             if(data.sender === selectedId){
                 setMessages(prev=>([...prev,{
                     sender: data.sender,

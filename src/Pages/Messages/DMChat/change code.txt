@@ -1,0 +1,4 @@
+// If number of online users is 0 or if the currect selected user is not online then set selectedUserId to null
+        if(Object.keys(users).length === 0 || !(setSelectedUserId in Object.keys(users))){
+            setSelectedUserId(null);
+        }

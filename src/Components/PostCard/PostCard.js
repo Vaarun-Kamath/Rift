@@ -48,19 +48,26 @@ function Post({
 		setPostLiked(likeStatCurr)
 	}, [likeStatCurr]);
 	return (
-		<div className='postcard-box-container'>
+		<div className='postcard-box-container' onClick={()=>{console.log("Open Post")}}>
 			<div className='postcard-heading'>
 				<div className='post-user-info-container'>
-				<div className='pf-pic-disp-container header-element'><span className='pfp-main-container'></span></div>
-				<span className='pf-name header-element'>
-					<p className='username-container-main header-text-main'>
-						{username.charAt(0).toUpperCase() + username.slice(1)}
-					</p>
-					<p className='rift-id-container-main header-text-main'>Rift ID Here</p>
-				</span>
+					<div className='pf-pic-disp-container header-element'>
+						<span className='pfp-main-container'></span>
+					</div>
+					<span className='pf-name header-element'>
+						<p className='username-container-main header-text-main'>
+							{username.charAt(0).toUpperCase() + username.slice(1)}
+						</p>
+						<p className='rift-id-container-main header-text-main'>Rift ID Here</p>
+					</span>
+					<div className='postcard-created-time'>
+						{/* <span >hekllo</span> */}
+						<p>hello</p>
+					</div>
 				</div>
 				<div className='pf-interactive header-element'></div>
 			</div>
+			
 			<div className='postcard-content'>
 				<span className='content-text-container'>
 				<p className='content-text-main'>
@@ -69,6 +76,7 @@ function Post({
 				</span> 
 				{/* <span className='content-imgvid-container'></span> */}
 			</div>
+			
 			<div className='postcard-engage'>
 				<div className='like-button-container engage-button-container' >
 					<div className={`like-button engage-button ${postLiked ? 'like-button-clicked' : 'like-button'}`} onClick={likeClicked} id='like-button-id'></div> 
